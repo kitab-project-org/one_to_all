@@ -322,13 +322,19 @@ def extract_milestone_data_from_folder(folder, outfolder, stats_folder, openiti_
 openiti_version = "2022.2.7"
 meta_fp = r"../../kitab-metadata-automation/releases/OpenITI_metadata_2022-2-7_merged.csv"
 meta_fp = "../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022-2-7_merged_wNoor.csv"
+base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/v7/pri/output/pri/align_align-stats_bi-dir.csv"
 
 openiti_version = "2023.1.8"
 meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2023-1-8_wNoor.csv"
 meta = load_metadata(meta_fp)
-
-base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/v7/pri/output/pri/align_align-stats_bi-dir.csv"
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2023/master/v8/pri/output/align_align-stats_bi-dir.csv"
+
+openiti_version = "2022.1.6"
+meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022.1.6_wNoor.csv"
+meta = load_metadata(meta_fp)
+base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/Oct-v6-oldPassim-used/pri/output/pri/align_align-stats_partitioned_bi-dir.csv"
+
+
 outfolder = "../msdata"
 stats_folder = "../stats"
 for i, id_ in enumerate(os.listdir(base_url)):
