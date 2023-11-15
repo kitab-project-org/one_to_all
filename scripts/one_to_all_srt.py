@@ -330,7 +330,7 @@ meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2023/master/v8/pri/output/align_align-stats_bi-dir.csv"
 
 openiti_version = "2022.1.6"
-meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022.1.6_wNoor.csv"
+meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022-1-6_wNoor.csv"
 meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/Oct-v6-oldPassim-used/pri/output/pri/align_align-stats_partitioned_bi-dir.csv"
 
