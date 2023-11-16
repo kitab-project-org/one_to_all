@@ -334,6 +334,11 @@ meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022-1
 meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/Oct-v6-oldPassim-used/pri/output/pri/align_align-stats_partitioned_bi-dir.csv"
 
+openiti_version = "2021.2.5"
+meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/2021.2.5/metadata/OpenITI_metadata_2021-2-5_wNoor.csv"
+meta = load_metadata(meta_fp)
+base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2021/master/Oct/pri/outputs/align_align-stats_partitioned_bi-dir.csv"
+
 
 outfolder = "../msdata"
 stats_folder = "../stats"
