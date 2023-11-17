@@ -87,10 +87,15 @@ import requests
 def load_metadata(meta_fp="OpenITI_metadata_2021-1-4_merged.txt"):
     with open(meta_fp, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file, delimiter="\t")
-        meta = {row["id"]: {"status": row["status"],\
+        meta = {row["id"].split("-")[0]: {"status": row["status"],\
                             "date": int(row["date"]),\
                             "author": row["author_lat"],\
                             "book": row["book"]} for row in reader}
+        print("example key:", list(meta.keys())[0])
+        print("example key:", list(meta.keys())[100])
+        print("example key:", list(meta.keys())[1000])
+
+
     return meta
 
 def download_file(url, filepath):
@@ -177,7 +182,7 @@ def extract_milestone_data_from_file(file, ms_data, main, comp,
 ##        ms_data[main_ms][comp][comp_ms][comp_b]["e1"] = main_e
 ##        ms_data[main_ms][comp][comp_ms][comp_b]["ch_match"] = ch_match
         ms_data[main_ms].append({"b1": main_b, "e1": main_e,
-                                 "id2": comp, "ms2": comp_ms,
+                                 "id2": comp.split("-")[0], "ms2": comp_ms,
                                  "b2": comp_b, "e2": comp_e,
                                  "ch_match": ch_match,
                                  "matches_percent": matches_percent})
@@ -196,6 +201,8 @@ def compute_stats(ms_data, meta):
     for ms1, reuse in ms_data.items():
         for d in reuse:
             id2 = d["id2"]
+            if "-" in id2:
+                id2 = id2.split("-")[0]
             if not id2 in stats:
                 stats[id2] = {"alignments": 0, "ch_match": 0, "book": meta[id2]["book"]}
             stats[id2]["alignments"] += 1
@@ -318,7 +325,7 @@ def extract_milestone_data_from_folder(folder, outfolder, stats_folder, openiti_
     return ms_data
 
 
-
+"""
 openiti_version = "2022.2.7"
 meta_fp = r"../../kitab-metadata-automation/releases/OpenITI_metadata_2022-2-7_merged.csv"
 meta_fp = "../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022-2-7_merged_wNoor.csv"
@@ -333,9 +340,9 @@ openiti_version = "2022.1.6"
 meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022-1-6_wNoor.csv"
 meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/Oct-v6-oldPassim-used/pri/output/pri/align_align-stats_partitioned_bi-dir.csv"
-
+"""
 openiti_version = "2021.2.5"
-meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/2021.2.5/metadata/OpenITI_metadata_2021-2-5_wNoor.csv"
+meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/2021.2.5/metadata/OpenITI_metadata_2021-2-5_merged_wNoor.csv"
 meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2021/master/Oct/pri/outputs/align_align-stats_partitioned_bi-dir.csv"
 
