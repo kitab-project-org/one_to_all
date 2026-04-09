@@ -88,7 +88,7 @@ def load_metadata(meta_fp="OpenITI_metadata_2021-1-4_merged.txt"):
     with open(meta_fp, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file, delimiter="\t")
         meta = {row["id"].split("-")[0]: {"status": row["status"],\
-                            "date": int(row["date"]),\
+                            "date": int(row["date"]) if row["date"] else None,\
                             "author": row["author_lat"],\
                             "book": row["book"]} for row in reader}
         print("example key:", list(meta.keys())[0])
@@ -340,12 +340,16 @@ openiti_version = "2022.1.6"
 meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/OpenITI_metadata_2022-1-6_wNoor.csv"
 meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2022/master/Oct-v6-oldPassim-used/pri/output/pri/align_align-stats_partitioned_bi-dir.csv"
-"""
+
 openiti_version = "2021.2.5"
 meta_fp = "../../../../OpenITI/RELEASE_git/RELEASE_wNoor/2021.2.5/metadata/OpenITI_metadata_2021-2-5_merged_wNoor.csv"
 meta = load_metadata(meta_fp)
 base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2021/master/Oct/pri/outputs/align_align-stats_partitioned_bi-dir.csv"
-
+"""
+openiti_version = "2025.1.9"
+meta_fp = "/home/admin-kitab/Documents/OpenITI/RELEASE_git/RELEASE_wNoor/RELEASE_private/metadata/OpenITI_metadata_2025-1-9_wNoor.csv"
+meta = load_metadata(meta_fp)
+base_url = "/home/admin-kitab/Documents/passim_runs/kitab_runs/2025/master/v9/pri/output/align_align-stats_bi-dir.csv"
 
 outfolder = "../msdata"
 stats_folder = "../stats"
