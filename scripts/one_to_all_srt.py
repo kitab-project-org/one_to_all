@@ -87,10 +87,14 @@ import requests
 def load_metadata(meta_fp="OpenITI_metadata_2021-1-4_merged.txt"):
     with open(meta_fp, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file, delimiter="\t")
-        meta = {row["id"].split("-")[0]: {"status": row["status"],\
-                            "date": int(row["date"]) if row["date"] else None,\
-                            "author": row["author_lat"],\
-                            "book": row["book"]} for row in reader}
+        meta = {\
+            row["id"].split("-")[0]: {\
+                "status": row["status"],\
+                "date": int(row["date"]) if row["date"] else None,\
+                "author": row["author_lat"],\
+                "book": ".".join(row["version_uri"].split(".")[:2])\
+            } for row in reader\
+        }
         print("example key:", list(meta.keys())[0])
         print("example key:", list(meta.keys())[100])
         print("example key:", list(meta.keys())[1000])
